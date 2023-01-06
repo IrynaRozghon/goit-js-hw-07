@@ -1,8 +1,9 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-const galleryElement = document.querySelector('.gallery');
+// створення та рендер розмітки
+ const generalGallery = document.querySelector('.gallery');
 
-function createImgInMarkup(galleryItems) {
+ function createGalleryMarkup(galleryItems) {
     return galleryItems
         .map(({ preview, original, description }) => {
         return `<a class="gallery__link" href="${original}">
@@ -16,12 +17,16 @@ function createImgInMarkup(galleryItems) {
         .join('');
    
 }
-galleryElement.insertAdjacentHTML('beforeend', createImgInMarkup(galleryItems));
+// підключення скрипту та стилів
+//ініціалізація бібліотеки та створення і додав. елем
+const photoMarkup = createGalleryMarkup(galleryItems);
 
-const gallery = new simpleLightbox('.gallery.a', {
-    caption: true,
+generalGallery.insertAdjacentHTML('beforeend', photoMarkup);
+
+const gallery = new SimpleLightbox('.gallery a', {
+    captions: true,
     captionsData: "alt",
     captionDelay: 250,
 });
-
-console.log(galleryItems);
+// в документації options додати підписи до зобр., підпис через 250
+console.log(generalGallery);
