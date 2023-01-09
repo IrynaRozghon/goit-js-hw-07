@@ -23,8 +23,9 @@ function createImgInMarkup(galleryItems) {
 galleryElement.addEventListener('click', onClickImage);
 // підключаємо скрипти у html
 // ознайомитись із документацією відкриття модального вікна по кліку, використати її
-galleryElement.addEventListener('keydown', clickImageClose);
-  
+
+document.addEventListener('keydown', clickImageClose);
+
 function onClickImage(event) {
     event.preventDefault();
     if (event.target.nodeName !== 'IMG') {
@@ -46,7 +47,7 @@ function onClickImage(event) {
         instance.show()
     );
 
-
+galleryElement.addEventListener('keydown', clickImageClose);
   
 // реалізуємо делегування через функцію, перевіряємо чи клікнули саме на картинку
     
