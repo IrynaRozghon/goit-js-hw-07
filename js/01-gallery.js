@@ -23,7 +23,8 @@ function createImgInMarkup(galleryItems) {
 galleryElement.addEventListener('click', onClickImage);
 // підключаємо скрипти у html
 // ознайомитись із документацією відкриття модального вікна по кліку, використати її
-
+galleryElement.addEventListener('keydown', clickImageClose);
+  
 function onClickImage(event) {
     event.preventDefault();
     if (event.target.nodeName !== 'IMG') {
@@ -31,10 +32,22 @@ function onClickImage(event) {
     }
     console.log(event.target.nodeName);
 
-    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}"/>`);
-    instance.show();
+    const instance = basicLightbox.create(`<img src="${event.target.dataset.source}"/>`,
+        {
+            onShow: (instance) => {
+                galleryElement.addEventListener('keydown', onClickImage);
+            },
+            onClose: (instance) => {
+                galleryElement.addEventListener('keydown', onClickImage);
+            },
 
-    galleryElement.addEventListener('keydown', clickImageClose);
+        },
+        
+        instance.show()
+    );
+
+
+  
 // реалізуємо делегування через функцію, перевіряємо чи клікнули саме на картинку
     
 function clickImageClose(event) {
