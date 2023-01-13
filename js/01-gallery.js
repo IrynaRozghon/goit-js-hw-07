@@ -24,7 +24,7 @@ galleryElement.addEventListener('click', onClickImage);
 // підключаємо скрипти у html
 // ознайомитись із документацією відкриття модального вікна по кліку, використати її
 
-document.addEventListener('keydown', clickImageClose);
+document.addEventListener('keydown', clickImage);
 
 function onClickImage(event) {
     event.preventDefault();
