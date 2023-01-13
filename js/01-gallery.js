@@ -36,17 +36,14 @@ function onClickImage(event) {
     const instance = basicLightbox.create(`<img src="${event.target.dataset.source}"/>`,
         {
             onShow: (instance) => {
-                galleryElement.addEventListener('keydown', onClickImage);
+                galleryElement.addEventListener('keydown', clickImageClose);
             },
             onClose: (instance) => {
-                galleryElement.addEventListener('keydown', onClickImage);
+                galleryElement.addEventListener('keydown', clickImageClose);
             },
-
-        },
-        
-        instance.show()
+        }, 
     );
-
+instance.show()
 galleryElement.addEventListener('keydown', clickImageClose);
   
 // реалізуємо делегування через функцію, перевіряємо чи клікнули саме на картинку
