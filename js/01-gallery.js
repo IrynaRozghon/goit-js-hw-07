@@ -43,8 +43,6 @@ function onClickImage(event) {
     );
     instance.show()
     
-galleryElement.addEventListener('keydown', clickImageClose);
-document.addEventListener('keydown', clickImageClose); 
 // реалізуємо делегування через функцію, перевіряємо чи клікнули саме на картинку
     
 function clickImageClose(event) {
